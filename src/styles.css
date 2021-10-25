@@ -1,0 +1,40 @@
+/* .margin {
+  margin-left: 80px;
+}
+
+#list{
+  position:relative; 
+  left:0px; top:10px;
+  margin-left: 80px;
+}
+a{
+  margin-right: 20px;
+}
+th,td,pagination-controls{
+  text-align: center;
+}
+.button{
+  margin-left: 120px;
+  margin-bottom: 20px;
+}
+
+.feedback{
+  color: rgb(231, 71, 71);
+}
+
+#background{
+  background-color:rgb(179, 176, 142);
+}
+
+#background-edit{
+  width: 550px;
+  height: 500px;
+  margin-left: 100px;
+  margin-top: 50px;
+  background-color:rgb(179, 176, 142);
+} */
+
+
+@import '../node_modules/@syncfusion/ej2-dropdowns/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-inputs/styles/material.css';
+

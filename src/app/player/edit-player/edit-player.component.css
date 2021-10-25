@@ -1,0 +1,18 @@
+.images{
+
+    margin-left: 110px;
+    overflow: hidden;
+}
+img{
+    width: 300px;
+    height: 300px;
+    position: relative;
+    border: 5px;
+    border-radius: 100%;
+}
+.button-image{
+    position: absolute;
+    top: 50px;
+    right: 90px;
+}
+

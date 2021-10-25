@@ -1,0 +1,52 @@
+
+<div class="jumbotron py-3">
+    <h1 class="display-4 text-center">CHELSEA</h1>
+    <h2 class="display-4 text-center"><a  href="" (click)="logOut()">Log Out</a></h2>
+</div>
+<div class="margin">
+    <div class="row">
+        <div class="col-md-4" >
+            <app-payment-detail-form></app-payment-detail-form>
+        </div>
+        <div class="col-md-6" id="list">
+            <input class ="form-control" type="text" name="playerName" [(ngModel)]="playerName" placeholder="Enter name to Search"
+            (ngModelChange)="Search()"
+            >
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Player Name</th>
+                    <th scope="col">Position</th>
+                    <th scope="col">Native Country</th> 
+                    <th scope="col">Date of Birth</th>
+                    <th scope="col">Image</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                  *ngFor="let pd of service.data |
+                 paginate:{itemsPerPage:3,
+                 currentPage: p,
+                 totalItems: total
+                } "
+                  >
+                    <td>{{pd.playerName}}</td>
+                    <td>{{pd.position}}</td>
+                    <td>{{pd.nativeCountry}}</td>
+                    <td>{{pd.dateOfBirth}}</td>
+                    <td><img [src]="service.PhotoURL+pd.imageName" height="150px;" width="150px;"></td>
+                    <td>
+                        <a [routerLink]="['edit', pd.id]"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                          </svg></a>
+                        <i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(pd.id)"></i>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+        
+    </div>
+</div>

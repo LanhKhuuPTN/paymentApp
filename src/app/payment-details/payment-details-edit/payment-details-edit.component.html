@@ -1,0 +1,75 @@
+<!-- <form  [formGroup]="editdata" (ngSubmit)="UpdateData()">
+    <input type="hidden" name="paymentDetailID" 
+     />
+    <div class="form-group">
+        <label> PLayer Name</label>
+        <input class="form-control form-control-lg" placeholder="Full Name"  formControlName="playerName"
+           >
+    </div>
+    <div class="form-group">
+        <label>POSITION</label>
+        <input class="form-control form-control-lg" placeholder=""  name="position"
+        formControlName="position" 
+         >
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Native Country</label>
+            <input  class="form-control form-control-lg" placeholder=""
+          formControlName="nativeCountry"
+              >
+        </div>
+        <div class="form-group col-md-6">
+            <label>Date Of Birth</label>
+            <input class="form-control form-control-lg" matInput [matDatepicker]="picker" formControlName="dateOfBirth" >
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker> 
+        </div>
+        
+    </div>
+    <div class="form-group col-md-6">
+        <label>Image</label>
+        <input type="file" class="form-control form-control-lg" 
+         (change)="getFile($event)" >
+              </div>   
+    <div class="form-group">
+        <button class="btn btn-info btn-lg btn-block" type="submit" >SUBMIT</button>
+    </div>
+</form> -->
+<form id= "background-edit" class="row g-3 needs-validation" novalidate  [formGroup]="editdata" (ngSubmit)="UpdateData()">
+    <input type="hidden" name="paymentDetailID" >
+    <div class="col-md-4">
+      <label for="validationCustom01" class="form-label">Player name</label>
+      <input type="text" class="form-control" placeholder=""  formControlName="playerName"  >
+      
+    </div>
+    <div class="col-md-5">
+        <label for="validationCustom04" class="form-label">Position</label>
+        <select class="form-select"  name="position"
+        formControlName="position" >
+        <option *ngFor ="let ps of List_position" [value]="ps" [selected]="ps == choose_position">{{ps}}<option>
+        </select>
+      </div>
+    <div class="col-md-4">
+      <label for="valid ationCustomUsername" class="form-label">Date of Birth</label>
+      <div class="input-group has-validation">
+        <input class="form-control form-control-lg" matInput [matDatepicker]="picker" formControlName="dateOfBirth" >
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <label for="validationCustom03" class="form-label">Native Country</label>
+      <input type="text" class="form-control" placeholder="Native Country"
+      formControlName="nativeCountry">
+
+    </div>
+    <div class="col-md-4">
+      <label for="validationCustom05" class="form-label">Image</label>
+      <input type="file" class="form-control"
+            (change)="getFile($event)">
+    </div>
+    <div class="button">
+      <button class="btn btn-primary" type="submit">Submit form</button>
+    </div>
+  </form>
