@@ -35,7 +35,8 @@ import { MatSelectCountryModule } from "@angular-material-extensions/select-coun
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns'
+import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
+import { RegisterTeamComponent } from './register-team/register-team.component'
 
 export function tokenGetter(){
   return localStorage.getItem('jwt');
@@ -58,6 +59,7 @@ export function tokenGetter(){
     ShowPlayerComponent,
     EditPlayerComponent,
     ImageCropperComponent,
+    RegisterTeamComponent,
  
   ],
   imports: [

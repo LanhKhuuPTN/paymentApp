@@ -3,9 +3,10 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\shared",
+    "\\src\\app\\register",
+    "\\src\\app\\register-team",
     "\\src\\environments"
   ],
-  "SelectedNode": "\\src\\index.html",
+  "SelectedNode": "\\src\\app\\register-team\\register-team.component.ts",
   "PreviewInSolutionExplorer": false
 }
