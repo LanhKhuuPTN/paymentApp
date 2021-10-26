@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ManageTeamService } from '../shared/manage-team.service';
 
 @Component({
   selector: 'app-register-team',
@@ -9,7 +10,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class RegisterTeamComponent implements OnInit {
   imageName: string;
   imagePath: any;
-  constructor() {}
+  constructor(public serviceTeam: ManageTeamService) {}
 
   ngOnInit(): void {}
 
@@ -20,11 +21,30 @@ export class RegisterTeamComponent implements OnInit {
     imagePath: new FormControl(''),
     country: new FormControl('', Validators.required),
   });
-
+  formData = new FormData();
   onSubmit(): void {
+    var Data = {
+      teamName: this.registerForm.value['teamName'],
+      dateCreate: this.registerForm.value['dateCreated'],
+      imageName: this.registerForm.value['imageName'],
+      country: this.registerForm.value['country'],
+    };
+    // this.formData.append("teamName", this.registerForm.value["teamName"]);
+    // this.formData.append("dateCreate", this.registerForm.value["dateCreated"]);
+    // this.formData.append("imageName", "");
+    // this.formData.append("country", this.registerForm.value["country"]);
     console.log('submitted');
-    console.log(this.registerForm.value);
+    // console.log(this.formData);
+    this.serviceTeam.CreateTeam(Data).subscribe(
+      (res) => {
+        console.log('success');
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
+
   readUrl(event: any) {
     if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();

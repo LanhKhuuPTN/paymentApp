@@ -15,6 +15,7 @@ import { RegisterTeamComponent } from './register-team/register-team.component';
 import { ShowTeamComponent } from './teamManage/show-team/show-team.component';
 
 const routes: Routes = [
+<<<<<<< HEAD
   {
     path: '',
     component: PaymentDetailsComponent,
@@ -48,6 +49,45 @@ const routes: Routes = [
   { path: 'forgotpassword', component: ForgotPasswordComponent },
   {
     path: 'registerTeam',
+=======
+  {
+    path: "",
+    component: PaymentDetailsComponent, canActivate: [AuthGuardService]
+  },
+  {
+    path: "edit/:id",
+    component: PaymentDetailsEditComponent, canActivate: [AuthGuardService]
+  },
+  {
+    path: "login",
+    component: LoginComponent,
+  },
+  {
+    path : "login/register",
+    component: RegisterComponent,
+  },
+  {
+    path : "confirmemail",
+    component: ConfirmComponent,
+  },
+  {
+    path : "confirmpassword",
+    component: ForgotPasswordComponent,
+  },
+  {
+    path: "login/forgot",
+    component: ResetpasswordComponent,
+  },
+  {path:'forgotpassword',
+   component: ForgotPasswordComponent
+  },
+  // {
+  //   path: '',
+  //   component: PlayerComponent,
+  // },
+  {
+    path: 'register', canActivate: [AuthGuardService],
+>>>>>>> a2fe3689ffed20605428e1bc9a8063e55d2e2f69
     component: RegisterTeamComponent,
   },
   {

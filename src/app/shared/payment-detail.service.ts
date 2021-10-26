@@ -76,6 +76,8 @@ export class PaymentDetailService {
     // toPromise().then(res => this.list as PaymentDetail[])
     }
 
+
+
     forgotPassword(data: any){
     return this.http.post(this.forgot,data);    
     }
@@ -89,6 +91,7 @@ export class PaymentDetailService {
     UploadPhoto(val: any) {
       return this.http.post(this.baseURl+"/SaveFile", val);
     }
+
 
     
     
