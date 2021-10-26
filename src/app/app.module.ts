@@ -11,13 +11,13 @@ import { RouterModule } from '@angular/router';
 import { PaymentDetailsEditComponent } from './payment-details/payment-details-edit/payment-details-edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatInputModule} from '@angular/material/input';
-import {MatNativeDateModule} from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
-import { LoginComponent } from './login/login.component'
-import {TokenInterceptorService} from './shared/token-interceptor.service';
+import { LoginComponent } from './login/login.component';
+import { TokenInterceptorService } from './shared/token-interceptor.service';
 
 import { JwtModule } from '@auth0/angular-jwt';
 import { RegisterComponent } from './register/register.component';
@@ -30,18 +30,20 @@ import { ShowPlayerComponent } from './player/show-player/show-player.component'
 import { EditPlayerComponent } from './player/edit-player/edit-player.component';
 import { ImageCropperComponent } from './player/image-cropper/image-cropper.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { MatSelectCountryModule } from "@angular-material-extensions/select-country";
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatSelectCountryModule } from '@angular-material-extensions/select-country';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
-import { RegisterTeamComponent } from './register-team/register-team.component'
+import { RegisterTeamComponent } from './register-team/register-team.component';
+import { ShowTeamComponent } from './teamManage/show-team/show-team.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
-export function tokenGetter(){
+export function tokenGetter() {
   return localStorage.getItem('jwt');
 }
-
 
 @NgModule({
   declarations: [
@@ -60,7 +62,7 @@ export function tokenGetter(){
     EditPlayerComponent,
     ImageCropperComponent,
     RegisterTeamComponent,
- 
+    ShowTeamComponent,
   ],
   imports: [
     BrowserModule,
@@ -79,23 +81,24 @@ export function tokenGetter(){
     NgxMatSelectSearchModule,
     NgSelectModule,
     DropDownListModule,
+    MatCardModule,
+    MatButtonModule,
 
-    
     JwtModule.forRoot({
-      config:{
-       tokenGetter: tokenGetter,
-       allowedDomains: ["localhost:5001"],
-       disallowedRoutes: []
-      }
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ['localhost:5001'],
+        disallowedRoutes: [],
+      },
     }),
-  
   ],
-  providers: [{
-    provide:HTTP_INTERCEPTORS,
-    useClass: TokenInterceptorService, 
-    multi: true,
-  }
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

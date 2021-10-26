@@ -14,7 +14,6 @@
         class="form-control"
         formControlName="teamName"
         placeholder="What's your team called?"
-        required
       />
     </div>
     <span *ngIf="registerForm.controls.teamName.invalid" style="color: red">
@@ -27,7 +26,6 @@
         type="date"
         class="form-control"
         formControlName="dateCreated"
-        required
       />
     </div>
     <span *ngIf="registerForm.controls.dateCreated.invalid" style="color: red">
@@ -41,7 +39,6 @@
         class="form-control"
         formControlName="country"
         placeholder="Where're you from?"
-        required
       />
     </div>
     <span *ngIf="registerForm.controls.country.invalid" style="color: red">
@@ -57,14 +54,9 @@
         class="form-control image-url"
         formControlName="imagePath"
         (change)="readUrl($event)"
-        required
       />
       <img [src]="imagePath" />
     </div>
-    <span *ngIf="registerForm.controls.imagePath.invalid" style="color: red">
-      Please choose your team image</span
-    >
-    <br />
     <button
       [disabled]="!registerForm.valid"
       class="btn btn-success m-4 mb-3 ml-3 d-flex"

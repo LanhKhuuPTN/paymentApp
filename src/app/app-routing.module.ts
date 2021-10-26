@@ -12,46 +12,47 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { PlayerComponent } from './player/player.component';
 import { ImageCropperComponent } from 'ngx-image-cropper';
 import { RegisterTeamComponent } from './register-team/register-team.component';
+import { ShowTeamComponent } from './teamManage/show-team/show-team.component';
 
 const routes: Routes = [
-  // {
-  //   path: "",
-  //   component: PaymentDetailsComponent, canActivate: [AuthGuardService]
-  // },
-  // {
-  //   path: "edit/:id",
-  //   component: PaymentDetailsEditComponent, canActivate: [AuthGuardService]
-  // },
-  // {
-  //   path: "login",
-  //   component: LoginComponent,
-  // },
-  // {
-  //   path : "login/register",
-  //   component: RegisterComponent,
-  // },
-  // {
-  //   path : "confirmemail",
-  //   component: ConfirmComponent,
-  // },
-  // {
-  //   path : "confirmpassword",
-  //   component: ForgotPasswordComponent,
-  // },
-  // {
-  //   path: "login/forgot",
-  //   component: ResetpasswordComponent,
-  // },
-  // {path:'forgotpassword',
-  //  component: ForgotPasswordComponent
-  // },
-  /*{
-    path: '',
-    component: PlayerComponent,
-  },*/
   {
     path: '',
+    component: PaymentDetailsComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'edit/:id',
+    component: PaymentDetailsEditComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'login/register',
+    component: RegisterComponent,
+  },
+  {
+    path: 'confirmemail',
+    component: ConfirmComponent,
+  },
+  {
+    path: 'confirmpassword',
+    component: ForgotPasswordComponent,
+  },
+  {
+    path: 'login/forgot',
+    component: ResetpasswordComponent,
+  },
+  { path: 'forgotpassword', component: ForgotPasswordComponent },
+  {
+    path: 'registerTeam',
     component: RegisterTeamComponent,
+  },
+  {
+    path: 'teamManagement',
+    component: ShowTeamComponent,
   },
 ];
 

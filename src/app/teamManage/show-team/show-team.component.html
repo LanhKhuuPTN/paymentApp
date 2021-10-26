@@ -1,0 +1,32 @@
+<!-- <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>
+        <div class="d-flex flex-row">
+          <input type="text" class="form-control" />
+        </div>
+        Name
+      </th>
+      <th>Date Created</th>
+      <th>Country</th>
+      <th>Options</th>
+    </tr>
+  </thead>
+
+</table> -->
+<div *ngFor="let item of service.data" class="listOfPLayer">
+  <mat-card>
+    <mat-card-title>
+      {{ item.playerName }}
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{ item.nativeCountry }}
+    </mat-card-subtitle>
+    <mat-card-content> DOB: {{ item.dateOfBirth }} </mat-card-content>
+    <mat-card-content> Play on: {{ item.position }} </mat-card-content>
+    <mat-card-actions align="end">
+      <button class="btn btn-light">Edit</button>
+      <button class="btn btn-danger">Disband</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
