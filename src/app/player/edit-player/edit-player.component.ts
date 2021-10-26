@@ -103,7 +103,6 @@ export class EditPlayerComponent implements OnInit {
     this.formData.append("imageName", this.imageName);
     this.formData.append('nativeCountry', this.nativeCountry);
     if(this.formData.get("imageFile")!=null){
-      console.log("not null")
        this.formData.set("imageName", "");
      }
     console.log(this.formData.get("imageFile"));
