@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
     if (form.value.password != form.value.password_confirmation) {
       this.invalidPassword = true;
     }
-    //    console.log(formdata);
+    console.log(formdata);
     console.log(form.value.password, form.value.password_confirmation);
     this.service.register(formdata).subscribe(
       (res) => {

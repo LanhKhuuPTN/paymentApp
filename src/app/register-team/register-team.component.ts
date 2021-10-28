@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  FormBuilder,
+} from '@angular/forms';
 import { ManageTeamService } from '../shared/manage-team.service';
 
 @Component({
@@ -10,34 +15,49 @@ import { ManageTeamService } from '../shared/manage-team.service';
 export class RegisterTeamComponent implements OnInit {
   imageName: string;
   imagePath: any;
-  constructor(public serviceTeam: ManageTeamService) {}
+  uploadForm: FormGroup;
+  constructor(
+    public serviceTeam: ManageTeamService,
+    private formBuilder: FormBuilder
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.uploadForm = this.formBuilder.group({
+      teamName: ['', Validators.required],
+      dateCreate: ['', Validators.required],
+      imageName: [''],
+      imageFile: [''],
+      country: ['', Validators.required],
+    });
+  }
 
-  public registerForm = new FormGroup({
-    teamName: new FormControl('', Validators.required),
-    dateCreated: new FormControl('', Validators.required),
-    imageName: new FormControl(''),
-    imagePath: new FormControl(''),
-    country: new FormControl('', Validators.required),
-  });
-  formData = new FormData();
+  // public registerForm = new FormGroup({
+  //   teamName: new FormControl('', Validators.required),
+  //   dateCreated: new FormControl('', Validators.required),
+  //   imageName: new FormControl(''),
+  //   imageFile: new FormControl(''),
+  //   country: new FormControl('', Validators.required),
+  // });
+  // formData = new FormData();
   onSubmit(): void {
-    var Data = {
-      teamName: this.registerForm.value['teamName'],
-      dateCreate: this.registerForm.value['dateCreated'],
-      imageName: this.registerForm.value['imageName'],
-      country: this.registerForm.value['country'],
-    };
-    // this.formData.append("teamName", this.registerForm.value["teamName"]);
-    // this.formData.append("dateCreate", this.registerForm.value["dateCreated"]);
-    // this.formData.append("imageName", "");
-    // this.formData.append("country", this.registerForm.value["country"]);
+    // var Data = {
+    //   teamName: this.registerForm.value['teamName'],
+    //   dateCreate: this.registerForm.value['dateCreated'],
+    //   imageName: '',
+    //   country: this.registerForm.value['country'],
+    // };
+    const formData = new FormData();
+    formData.append('teamName', this.uploadForm.get('teamName')!.value);
+    formData.append('dateCreate', this.uploadForm.get('dateCreate')!.value);
+    formData.append('imageName', '');
+    formData.append('imageFile', this.uploadForm.get('imageFile')!.value);
+    formData.append('country', this.uploadForm.get('country')!.value);
     console.log('submitted');
-    // console.log(this.formData);
-    this.serviceTeam.CreateTeam(Data).subscribe(
+    console.log(formData);
+    this.serviceTeam.CreateTeam(formData).subscribe(
       (res) => {
         console.log('success');
+        console.log(res);
       },
       (err) => {
         console.log(err);
@@ -45,7 +65,7 @@ export class RegisterTeamComponent implements OnInit {
     );
   }
 
-  readUrl(event: any) {
+  onFileSelected(event: any) {
     if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
 
@@ -54,6 +74,8 @@ export class RegisterTeamComponent implements OnInit {
       };
 
       reader.readAsDataURL(event.target.files[0]);
+      var file = event.target.files[0];
+      this.uploadForm.get('imageFile')?.setValue(file);
     }
   }
 }

@@ -5,7 +5,7 @@
   >Register your team</label
 >
 <div id="RegisterForm" class="container center">
-  <form role="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <form role="form" [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="teamName"> <strong>Team's Name</strong> </label>
       <input
@@ -16,19 +16,19 @@
         placeholder="What's your team called?"
       />
     </div>
-    <span *ngIf="registerForm.controls.teamName.invalid" style="color: red">
+    <span *ngIf="uploadForm.controls.teamName.invalid" style="color: red">
       Please enter your team's name</span
     >
     <div class="form-group">
-      <label for="dateCreated"> <strong>Date Created</strong> </label>
+      <label for="dateCreate"> <strong>Date Created</strong> </label>
       <input
-        id="dateCreated"
+        id="dateCreate"
         type="date"
         class="form-control"
-        formControlName="dateCreated"
+        formControlName="dateCreate"
       />
     </div>
-    <span *ngIf="registerForm.controls.dateCreated.invalid" style="color: red">
+    <span *ngIf="uploadForm.controls.dateCreate.invalid" style="color: red">
       Please pick a date
     </span>
     <div class="form-group">
@@ -41,24 +41,24 @@
         placeholder="Where're you from?"
       />
     </div>
-    <span *ngIf="registerForm.controls.country.invalid" style="color: red">
+    <span *ngIf="uploadForm.controls.country.invalid" style="color: red">
       Please enter your team's country</span
     >
     <div class="form-group">
-      <label for="imagePath"> <strong>Image</strong> </label>
+      <label for="imageFile"> <strong>Image</strong> </label>
       <input
         #file
-        id="imagePath"
+        id="imageFile"
         type="file"
         accept="image/*"
         class="form-control image-url"
-        formControlName="imagePath"
-        (change)="readUrl($event)"
+        formControlName="imageFile"
+        (change)="onFileSelected($event)"
       />
       <img [src]="imagePath" />
     </div>
     <button
-      [disabled]="!registerForm.valid"
+      [disabled]="!uploadForm.valid"
       class="btn btn-success m-4 mb-3 ml-3 d-flex"
       type="submit"
     >

@@ -17,13 +17,13 @@
 <div *ngFor="let item of service.data" class="listOfPLayer">
   <mat-card>
     <mat-card-title>
-      {{ item.playerName }}
+      {{ item.teamName }}
     </mat-card-title>
     <mat-card-subtitle>
-      {{ item.nativeCountry }}
+      {{ item.country }}
     </mat-card-subtitle>
-    <mat-card-content> DOB: {{ item.dateOfBirth }} </mat-card-content>
-    <mat-card-content> Play on: {{ item.position }} </mat-card-content>
+    <mat-card-content> DOB: {{ item.dateCreate }} </mat-card-content>
+    <mat-card-content> <img [src]="imagePath" /> </mat-card-content>
     <mat-card-actions align="end">
       <button class="btn btn-light">Edit</button>
       <button class="btn btn-danger">Disband</button>
